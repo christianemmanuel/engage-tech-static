@@ -712,6 +712,15 @@ a.pill:hover{border-color:var(--cyan);color:var(--cyan-700)}
   aspect-ratio:5/4;
 }
 .techviz > svg{position:absolute;inset:0;width:100%;height:100%}
+/* Client-supplied banner exports (assets/images/*). The panel chrome — rounded
+   corners, hairline border, gradient ground and the status badge — is baked
+   into each image, so the container drops its own border/background and only
+   sizes and clips. Aspect ratios are set per slot to the image's native ratio,
+   so object-fit:cover never actually crops. */
+.techviz--img,.map--img,.arty--img{background:none;border:0}
+.techviz > img,.map > img,.arty > img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+}
 .techviz.lt{background:var(--grad-viz-light);border-color:var(--cyan-100)}
 .viz-badge{
   position:absolute;left:18px;bottom:18px;

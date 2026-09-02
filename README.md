@@ -53,6 +53,7 @@ engage-tech-static/
 │   │   └── a11y-overrides.css  OPTIONAL, not loaded — see "Accessibility"
 │   ├── js/main.js              208 lines, progressive enhancement only
 │   ├── fonts/                  Inter variable + IBM Plex Mono 400/500/600 (78 KB)
+│   ├── images/                 client-supplied hero banners (2× PNG exports) + blog placeholder
 │   ├── logo.jpg                client-supplied brand mark (168×153) — the header/footer tile
 │   └── favicon.png             derived from logo.jpg (square-cropped, 64×64)
 │
@@ -208,6 +209,35 @@ and every mobile behaviour.
   high-resolution PNG master is still needed.
 - WordPress: wire the tile to `the_custom_logo()` / the Customizer logo so the
   client can replace it without touching templates.
+
+**Hero banners, client-directed:**
+
+- The inline SVG technology graphics are replaced by the images in
+  `assets/images/` — Home `homepage-banner.png`, Service
+  `manage-it-services-banner.png`, Location `raleigh-banner.png`, Industry
+  `healtcare-it-services-banner.png` (sic, the supplied filename), About
+  `about-us-banner.png`, Blog `blog-post-placeholder-image.jpg`. They are 2×
+  exports of the same graphics, so the design system's illustration language is
+  unchanged; each panel's `aspect-ratio` is set to the image's native ratio, so
+  nothing is cropped.
+- **The panel chrome is baked into the images** — rounded corners, hairline
+  border and the mono status badge. The `.viz-badge` overlays are therefore
+  removed from the markup and the `--img` panel variants drop the container's
+  own border/background. Badge text now lives in each image's `alt`. If a banner
+  is ever re-exported *without* the badge, restore the `.viz-badge` element
+  rather than editing the image.
+- No dedicated image was supplied for the Home **case-study** panel, so per
+  instruction it reuses `homepage-banner.png`. Note this makes it a dark panel
+  where the design system specified the light variant of the graphic; a light
+  16:11 export would restore that.
+- Weight: the five PNGs total ~1.6 MB (180–450 KB each). Acceptable for the
+  preview; before launch convert to WebP/AVIF (roughly 5–8× smaller) or serve via
+  WordPress's responsive `srcset`. Heroes load eager with `fetchpriority="high"`;
+  the case-study panel is lazy.
+- The sprite's gradient defs (`#eg`, `#eg-glow`, `#eg-f`, `#eg-r`) are now unused
+  but left in place; the icon symbols are still needed.
+- WordPress: each banner becomes the template's featured image or an ACF image
+  field, with these files as the defaults.
 
 **Other observations, not changed:**
 
