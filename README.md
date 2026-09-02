@@ -226,11 +226,10 @@ and every mobile behaviour.
   own border/background. Badge text now lives in each image's `alt`. If a banner
   is ever re-exported *without* the badge, restore the `.viz-badge` element
   rather than editing the image.
-- No dedicated image was supplied for the Home **case-study** panel, so per
-  instruction it reuses `homepage-banner.png`. Note this makes it a dark panel
-  where the design system specified the light variant of the graphic; a light
-  16:11 export would restore that.
-- Weight: the five PNGs total ~1.6 MB (180–450 KB each). Acceptable for the
+- The Home **case-study** panel uses `case-study-banner.png` (1076×740, the
+  light-variant uptime chart at the design system's 16:11) — so the light/dark
+  section rhythm the design system specifies for that block is intact.
+- Weight: the six PNGs total ~1.8 MB (180–450 KB each). Acceptable for the
   preview; before launch convert to WebP/AVIF (roughly 5–8× smaller) or serve via
   WordPress's responsive `srcset`. Heroes load eager with `fetchpriority="high"`;
   the case-study panel is lazy.
