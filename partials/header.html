@@ -1,0 +1,55 @@
+<!-- template-part: header  |  WP: header.php
+     Variant is a single class: .site-header.dark is used ONLY where the hero
+     is navy (home, location, industry). Nav items come from wp_nav_menu(). -->
+<header class="site-header{{HEADER_MODE}}">
+  <a class="logo" href="/">
+    <span class="lm"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span>
+    <span>Engage Tech<small>Solutions</small></span>
+    <span class="sr-only">Engage Tech Solutions — home</span>
+  </a>
+
+  <nav class="main-nav" aria-label="Primary">
+    <ul class="main-nav" style="display:contents">
+      <li class="has-mega">
+        <button class="nav-toggle{{ACT_SERVICES}}" aria-expanded="false" aria-controls="mega-services">
+          Services <svg aria-hidden="true"><use href="#i-chevd"/></svg>
+        </button>
+        <!--@mega-services-->
+      </li>
+      <li class="has-mega">
+        <button class="nav-toggle{{ACT_SOLUTIONS}}" aria-expanded="false" aria-controls="mega-solutions">
+          Solutions <svg aria-hidden="true"><use href="#i-chevd"/></svg>
+        </button>
+        <!--@mega-solutions-->
+      </li>
+      <li class="has-mega">
+        <button class="nav-toggle{{ACT_INDUSTRIES}}" aria-expanded="false" aria-controls="mega-industries">
+          Industries <svg aria-hidden="true"><use href="#i-chevd"/></svg>
+        </button>
+        <!--@mega-industries-->
+      </li>
+      <li class="has-mega">
+        <button class="nav-toggle{{ACT_RESOURCES}}" aria-expanded="false" aria-controls="mega-resources">
+          Resources <svg aria-hidden="true"><use href="#i-chevd"/></svg>
+        </button>
+        <!--@mega-resources-->
+      </li>
+      <li><a href="/about-us/"{{ACT_ABOUT}}>About</a></li>
+      <li><a href="/contact/"{{ACT_CONTACT}}>Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-right">
+    <a class="header-tel" href="tel:+19193008111">
+      <svg aria-hidden="true"><use href="#i-phone"/></svg>
+      <span class="tel-text">(919) 300-8111</span>
+      <span class="sr-only">Call Engage Tech Solutions on (919) 300-8111</span>
+    </a>
+    <a class="btn btn-pri btn-sm" href="/contact/">Book a Consultation</a>
+    <button class="nav-burger" aria-expanded="false" aria-controls="nav-drawer">
+      <svg aria-hidden="true"><use href="#i-menu"/></svg>
+      <span class="sr-only">Open menu</span>
+    </button>
+  </div>
+</header>
+<!-- /template-part: header -->

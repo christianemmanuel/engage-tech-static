@@ -1,0 +1,185 @@
+/* ==========================================================================
+   ENGAGE TECH SOLUTIONS — DESIGN TOKENS
+   Single source of truth. No hex value may appear outside this file.
+   Values copied verbatim from Engage-Tech-Design-System.html (v1.0).
+   WP: enqueue first, before every other stylesheet.
+   ========================================================================== */
+
+/* ---------- Self-hosted webfonts ----------------------------------------- */
+/* Inter VARIABLE — required: the system uses weights 550/650/750/850, which
+   static Inter cannot render (the design system doc itself has this bug). */
+@font-face{
+  font-family:'Inter';
+  font-style:normal;
+  font-weight:100 900;              /* variable axis */
+  font-display:swap;
+  src:url('../fonts/InterVariable-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../fonts/IBMPlexMono-400-latin.woff2') format('woff2');
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+  src:url('../fonts/IBMPlexMono-500-latin.woff2') format('woff2');
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+  src:url('../fonts/IBMPlexMono-600-latin.woff2') format('woff2');
+}
+
+:root{
+  /* ---------- Brand ------------------------------------------------------ */
+  --cyan:#00C6D7;                 /* signature: CTAs, icons, links, gradient origin */
+  --cyan-600:#00A5B4;             /* hover */
+  --cyan-700:#00808C;             /* TEXT-SAFE cyan on light — never use --cyan for body text */
+  --cyan-050:#E4F9FC;
+  --cyan-100:#C2F1F6;
+  --blue:#1683D8;
+  --blue-700:#1167AC;
+  --blue-050:#E8F3FD;
+  --deep:#173B8F;                 /* gradient terminus — rarely flat */
+  --navy:#0B1F33;                 /* authority: dark sections, headings */
+  --navy-800:#0F2A44;
+  --navy-700:#183A56;
+  --footer-bg:#071726;
+
+  /* ---------- Neutrals (cool-biased toward cyan, never neutral grey) ------ */
+  --white:#FFFFFF;
+  --bg:#F5F9FC;                   /* alternating section ground */
+  --line:#DCE7F0;
+  --line-2:#EAF1F7;
+  --ink:#17202A;                  /* body copy on light */
+  --muted:#64748B;                /* supporting copy, captions, meta */
+  --muted-2:#8A9AAD;
+  --body-ink:#42586C;             /* running text inside sections */
+  --body-ink-2:#3C5064;
+  --body-ink-3:#2E4356;
+  --nav-ink:#2A3F52;
+
+  /* ---------- On-dark text ----------------------------------------------- */
+  --on-dark:#DCE9F4;
+  --on-dark-lede:#A9C2D8;
+  --on-dark-muted:#8FA9C1;
+  --on-dark-body:#B4CADE;
+  --on-dark-card:#A2BBD1;
+  --on-dark-soft:#9DB6CC;
+  --on-dark-nav:#C6D8E8;
+  --on-dark-pill:#C3D6E7;
+  --on-dark-stat:#95AEC6;
+  --footer-ink:#93AEC6;
+  --footer-ink-2:#8AA5BD;
+  --footer-ink-3:#6E89A2;
+  --plogo-ink:#5A7089;
+  --plogo-ink-dark:#8FA9C1;
+
+  /* ---------- Signature gradient — angle LOCKED at 100deg ---------------- */
+  --grad:linear-gradient(100deg,#00C6D7 0%,#1683D8 52%,#173B8F 100%);
+  --grad-soft:linear-gradient(100deg,rgba(0,198,215,.14),rgba(22,131,216,.10) 55%,rgba(23,59,143,.12));
+  --grad-rev:linear-gradient(100deg,#173B8F 0%,#1683D8 48%,#00C6D7 100%);
+  /* on-dark variant — brightened so gradient text stays legible on navy */
+  --grad-ondark:linear-gradient(100deg,#3FE3F2,#4FA9F0 55%,#5C9BF2);
+  --grad-stat-dark:linear-gradient(100deg,#3FE3F2,#5AB0F2);
+  --grad-hero-glow:radial-gradient(circle,rgba(0,198,215,.26),rgba(22,131,216,.13) 42%,transparent 68%);
+  --grad-light-wash:linear-gradient(180deg,#FFFFFF,#F1F8FC);
+
+  /* ---------- Surfaces on dark ------------------------------------------- */
+  --dk-card:rgba(255,255,255,.035);
+  --dk-card-border:rgba(255,255,255,.11);
+  --dk-hairline:rgba(255,255,255,.10);
+  --cyan-veil:rgba(0,198,215,.12);
+  --cyan-veil-2:rgba(0,198,215,.16);
+  --cyan-edge:rgba(0,198,215,.30);
+  --cyan-edge-strong:rgba(0,198,215,.45);
+
+  /* ---------- Elevation --------------------------------------------------- */
+  --sh-1:0 1px 2px rgba(11,31,51,.05);
+  --sh-2:0 4px 16px rgba(11,31,51,.07);
+  --sh-3:0 14px 40px rgba(11,31,51,.12);
+  --sh-cy:0 12px 32px rgba(0,150,175,.28);
+  --sh-cy-hover:0 16px 38px rgba(0,150,175,.36);
+
+  /* ---------- Type -------------------------------------------------------- */
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  /* Responsive type scale — desktop values; stepped down in base.css */
+  --fs-h1:clamp(34px,4.4vw,58px);
+  --fs-h2:clamp(27px,3.2vw,42px);
+  --fs-h3:21px;              /* card/block default, = .mk h3. Standalone blocks may step to 28px via .h3-lg */
+  --fs-h3-lg:clamp(24px,2.1vw,28px);
+  --fs-h4:clamp(16.5px,1.4vw,18px);
+  --fs-lede:19px;
+  --fs-body:16px;
+  --fs-small:13.5px;
+  --fs-eyebrow:11px;
+  --fs-btn:15px;
+  --lh-h1:1.04; --lh-h2:1.12; --lh-h3:1.28; --lh-h4:1.35;
+  --lh-lede:1.62; --lh-body:1.72;
+  --tr-h1:-.035em; --tr-h2:-.03em; --tr-h3:-.02em; --tr-h4:-.012em;
+  --measure:66ch;
+
+  /* ---------- Layout ------------------------------------------------------ */
+  --container:1280px;             /* client direction: widened from the design system's 1180px */
+  --gutter:40px;
+  --section-y:84px;               /* desktop: measured from the rendered mockup (.s{padding:84px 0}).
+                                     The spec table states 96px; the mockup is the visual truth, so 84 wins
+                                     and the table supplies the tablet/mobile steps below. */
+  --section-y-tight:60px;
+  --grid-gap:16px;               /* mockup: .grid{gap:16px}. The spec table says 24px,
+                                     but the rendered mockup is the visual truth. */
+  --header-h:72px;
+  --header-h-compact:58px;
+
+  /* ---------- Radii ------------------------------------------------------- */
+  --r-btn:9px; --r-btn-sm:8px; --r-card:14px; --r-panel:16px;
+  --r-band:18px; --r-icon:11px; --r-pill:999px; --r-field:9px;
+
+  /* ---------- Motion ------------------------------------------------------ */
+  --ease:.18s ease;
+  --ease-card:.2s ease;
+
+  /* ---------- Component surfaces (derived) -------------------------------- */
+  --quote-ink-dark:#DAE8F4;       /* quote text on navy */
+  --tab-ink:#4A6076;              /* inactive tab label */
+  --prose-ink:#33485C;            /* article running text */
+  --viz-1:#0E2841;                /* technology-graphic gradient stops */
+  --viz-2:#0B1F33;
+  --viz-lt-1:#F3FAFD;
+  --viz-lt-2:#E8F3FB;
+  --portrait-1:#DDEEF6;           /* team portrait placeholder ground */
+  --portrait-2:#C7E4F2;
+  --article-wash-2:#F4FAFD;       /* article header wash terminus */
+  --grad-viz-dark:linear-gradient(150deg,#0E2841,#0B1F33);
+  --grad-viz-dark-60:linear-gradient(150deg,#0E2841,#0B1F33 60%);
+  --grad-viz-light:linear-gradient(150deg,#F3FAFD,#E8F3FB);
+  --grad-portrait:linear-gradient(150deg,#DDEEF6,#C7E4F2);
+  --grad-article-wash:linear-gradient(180deg,#FFFFFF,#F4FAFD);
+  --grad-hero-glow-lt:radial-gradient(circle,rgba(0,198,215,.16),rgba(22,131,216,.07) 45%,transparent 70%);
+  --grad-cta-glow:radial-gradient(circle,rgba(0,198,215,.34),rgba(22,131,216,.14) 45%,transparent 70%);
+}
+
+/* Tablet 768–1199 */
+@media (max-width:1199px){
+  :root{
+    --gutter:32px;
+    --section-y:72px;
+    --section-y-tight:52px;
+    --fs-lede:18px;
+    --header-h:62px;
+  }
+}
+/* Mobile ≤767 */
+@media (max-width:767px){
+  :root{
+    --gutter:20px;
+    --section-y:56px;
+    --section-y-tight:44px;
+    --fs-lede:17px;
+    --lh-body:1.7;
+    --fs-small:13px;
+    --fs-eyebrow:10.5px;
+    --header-h:56px;
+  }
+}

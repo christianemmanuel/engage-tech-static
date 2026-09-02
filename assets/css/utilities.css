@@ -1,0 +1,51 @@
+/* ==========================================================================
+   UTILITIES — deliberately few. One gradient utility; a second gradient
+   definition anywhere in the codebase is the design-review trigger.
+   ========================================================================== */
+
+/* The single gradient text utility */
+.g-txt{
+  background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+.s-dk .g-txt,.hero-dk .g-txt,.article-head .g-txt{
+  background:var(--grad-ondark);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+/* fallback for the rare engine without background-clip:text */
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .g-txt{color:var(--cyan-700);background:none}
+  .s-dk .g-txt,.hero-dk .g-txt{color:var(--cyan);background:none}
+  .stat .n{color:var(--cyan-700);background:none}
+  .s-dk .stat .n,.hero-dk .stat .n{color:var(--cyan);background:none}
+}
+
+/* Text helpers */
+.ctr{text-align:center}
+.measure{max-width:var(--measure)}
+.nowrap{white-space:nowrap}
+
+/* Spacing helpers — the only ones permitted */
+.mt-0{margin-top:0}
+.mt-14{margin-top:14px}
+.mt-16{margin-top:16px}
+.mt-20{margin-top:20px}
+.mt-26{margin-top:26px}
+.mt-32{margin-top:32px}
+.mt-36{margin-top:36px}
+.mt-40{margin-top:40px}
+
+/* Layout helpers */
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row--16{gap:16px}
+.stack{display:grid;gap:16px}
+.stack--12{gap:12px}
+.flex-none{flex:none}
+
+/* Visibility */
+.hide-desktop{display:none}
+@media (max-width:1023px){
+  .hide-mobile{display:none !important}
+  .hide-desktop{display:revert}
+}

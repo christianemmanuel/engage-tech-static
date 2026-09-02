@@ -1,0 +1,99 @@
+/* ==========================================================================
+   LAYOUT — container, section rhythm, grids, splits, hero shells
+   Section rhythm rule (design system): never two dark sections adjacent,
+   never more than three light in a row, dark CTA band closes every page.
+   ========================================================================== */
+
+/* ---------- Container ---------------------------------------------------- */
+.wrap{
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+  width:100%;
+}
+.wrap--narrow{max-width:1080px}
+.wrap--article{max-width:900px}
+.wrap--tight{max-width:860px}
+
+/* ---------- Section system ---------------------------------------------- */
+.s{padding-block:var(--section-y)}
+.s-tight{padding-block:var(--section-y-tight)}
+.s-lt{background:var(--white)}
+.s-bg{background:var(--bg)}
+.s-dk{background:var(--navy);position:relative;overflow:hidden}
+.s-flush-top{padding-top:0}
+.s-flush-bottom{padding-bottom:0}
+
+/* Section heading block */
+.s-head{max-width:660px}
+.s-head.ctr{margin-inline:auto;text-align:center}
+.s-head .lede{margin-top:16px}
+
+/* Standard gap between a section head and the content beneath it */
+.s-body{margin-top:40px}
+.s-body--tight{margin-top:36px}
+@media (max-width:767px){
+  .s-body{margin-top:30px}
+  .s-body--tight{margin-top:26px}
+}
+
+/* ---------- Grids -------------------------------------------------------- */
+.grid{display:grid;gap:var(--grid-gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+@media (max-width:1000px){
+  .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:660px){
+  .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---------- Split (50/50 content + visual) ------------------------------ */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.split--start{align-items:start;gap:48px}
+.split--wide-left{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+.split--content-left{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.split--faq{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+@media (max-width:920px){
+  .split,.split--wide-left,.split--content-left,.split--faq{grid-template-columns:minmax(0,1fr);gap:38px}
+  /* "Stack, visual first" — spec table, tablet row */
+  .split--visual-first > .split-visual{order:-1}
+}
+
+/* ---------- Hero grid (≈55/45) ------------------------------------------ */
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  gap:56px;
+  align-items:center;
+  position:relative;
+}
+@media (max-width:920px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:38px}
+}
+
+/* ---------- Article layout (sticky rail + prose) ------------------------ */
+.article-grid{display:grid;grid-template-columns:250px minmax(0,1fr);gap:52px;align-items:start}
+@media (max-width:1000px){
+  .article-grid{grid-template-columns:minmax(0,1fr);gap:32px}
+}
+
+/* Horizontal snap-scroll for card rows of 5+ on mobile (spec table) */
+@media (max-width:660px){
+  .grid--snap{
+    grid-auto-flow:column;
+    grid-auto-columns:82%;
+    grid-template-columns:none;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:var(--gutter);
+    margin-inline:calc(var(--gutter) * -1);
+    padding-inline:var(--gutter);
+    padding-bottom:8px;
+    scrollbar-width:none;
+  }
+  .grid--snap::-webkit-scrollbar{display:none}
+  .grid--snap > *{scroll-snap-align:start}
+}

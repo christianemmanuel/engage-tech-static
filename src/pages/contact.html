@@ -1,0 +1,255 @@
+<!--CONFIG
+{
+  "out": "contact/index.html",
+  "TITLE": "Contact Engage Tech Solutions | Raleigh, NC IT Support",
+  "DESC": "Tell us what's not working and we'll tell you plainly whether we can help. A named engineer replies within one business hour, 8am–6pm ET.",
+  "PATH": "/contact/",
+  "OGTYPE": "website",
+  "BODYCLASS": "tpl-contact",
+  "HEADER_MODE": "",
+  "ACT_CONTACT": " aria-current=\"page\"",
+  "SCHEMA": "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"ContactPage\",\"name\":\"Contact Engage Tech Solutions\",\"url\":\"https://engagetechsolutions.us/contact/\"},{\"@type\":\"LocalBusiness\",\"name\":\"Engage Tech Solutions, Inc.\",\"telephone\":\"+1-919-300-8111\",\"email\":\"info@engagetechsolutions.us\",\"url\":\"https://engagetechsolutions.us/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"4242 Six Forks Road, Suite 1550\",\"addressLocality\":\"Raleigh\",\"addressRegion\":\"NC\",\"postalCode\":\"27609\",\"addressCountry\":\"US\"},\"openingHoursSpecification\":[{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\"],\"opens\":\"08:00\",\"closes\":\"18:00\"}]},{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://engagetechsolutions.us/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Contact\"}]},{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Is the consultation really free?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes — the discovery call and the conversation that follows cost nothing. A full environment assessment is a paid engagement, and we tell you the price before you commit to it.\"}},{\"@type\":\"Question\",\"name\":\"How quickly will someone get back to me?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Within one business hour between 8am and 6pm ET. Outside those hours you will hear from us first thing the next business morning.\"}},{\"@type\":\"Question\",\"name\":\"We are only 10 people. Are we too small?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. We work with teams from around 10 users upward. Below that, co-managed or project work is usually a better fit than a full managed agreement.\"}},{\"@type\":\"Question\",\"name\":\"Do we have to leave our current IT provider first?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Not to talk to us. Many clients start with a co-managed arrangement or a single project. If you do transition, we handle the handover directly with the outgoing provider.\"}}]}]}</script>"
+}
+-->
+<!--@head-->
+<!--@svg-sprite-->
+<!--@header-->
+<!--@drawer-->
+
+<main id="main">
+
+  <!-- ── 1 · CONTACT HERO — the ONLY template with no hero visual. Anything
+           competing with the form is removed; the gradient appears in the H1
+           phrase and the submit button, and nowhere else. -->
+  <section class="hero-lt" style="padding:52px 0 0">
+    <div class="wrap">
+      <div class="s-head" style="max-width:720px">
+        <p class="kicker">Get in touch</p>
+        <h1 style="font-size:clamp(32px,3.8vw,48px)">Tell us what's not working. <span class="g-txt">We'll tell you plainly</span> whether we can help.</h1>
+        <p class="lede">A real engineer reads every submission. If we're not the right fit, we'll say so and point you somewhere that is.</p>
+      </div>
+
+      <div class="split split--wide-left split--start" style="margin-top:44px;padding-bottom:56px">
+
+        <!-- ── 2 · FORM — three tabs prevent three separate contact pages
+             competing in search. Nine fields is the ceiling. -->
+        <div>
+          <div class="form form--lg">
+            <div class="tabs" role="tablist" aria-label="What do you need?">
+              <button role="tab" id="tab-general" aria-controls="panel-general" aria-selected="true" tabindex="0">General inquiry</button>
+              <button role="tab" id="tab-quote" aria-controls="panel-quote" aria-selected="false" tabindex="-1">Request a quote</button>
+              <button role="tab" id="tab-client" aria-controls="panel-client" aria-selected="false" tabindex="-1">Existing client support</button>
+            </div>
+
+            <!-- General: 6 fields -->
+            <div role="tabpanel" id="panel-general" aria-labelledby="tab-general">
+              <form method="post" action="#" novalidate>
+                <div class="two">
+                  <p class="fg"><label for="g-name">Full name <i class="req" aria-hidden="true">*</i></label>
+                    <input id="g-name" name="name" type="text" autocomplete="name" placeholder="Jordan Blake" required></p>
+                  <p class="fg"><label for="g-company">Company <i class="req" aria-hidden="true">*</i></label>
+                    <input id="g-company" name="company" type="text" autocomplete="organization" placeholder="Blake &amp; Associates" required></p>
+                </div>
+                <div class="two">
+                  <p class="fg"><label for="g-email">Work email <i class="req" aria-hidden="true">*</i></label>
+                    <input id="g-email" name="email" type="email" autocomplete="email" placeholder="jordan@blakeassoc.com" required></p>
+                  <p class="fg"><label for="g-phone">Phone</label>
+                    <input id="g-phone" name="phone" type="tel" autocomplete="tel" placeholder="(919) 555-0143"></p>
+                </div>
+                <div class="two">
+                  <p class="fg"><label for="g-size">Number of employees <i class="req" aria-hidden="true">*</i></label>
+                    <span class="sel"><select id="g-size" name="employees" required>
+                      <option>Under 10</option><option>10–25</option><option selected>25–50</option>
+                      <option>50–100</option><option>100–250</option><option>250+</option>
+                    </select></span></p>
+                  <p class="fg"><label for="g-need">What do you need help with? <i class="req" aria-hidden="true">*</i></label>
+                    <span class="sel"><select id="g-need" name="need" required>
+                      <option>Managed IT Services</option>
+                      <option selected>Cybersecurity &amp; compliance</option>
+                      <option>Microsoft 365 Support</option>
+                      <option>Cloud Services</option>
+                      <option>Backup &amp; Disaster Recovery</option>
+                      <option>Enterprise IT Solutions</option>
+                      <option>Not sure yet</option>
+                    </select></span></p>
+                </div>
+                <p class="fg"><label for="g-msg">Anything we should know before the call?</label>
+                  <textarea id="g-msg" name="message" placeholder="We failed a spot check on our backups and have a client security audit in six weeks. Currently running M365 with no MFA on about a third of accounts."></textarea></p>
+                <button class="btn btn-pri btn-lg btn-block" type="submit">Book a Free Consultation <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+                <p class="micro"><svg aria-hidden="true"><use href="#i-check"/></svg><span>Replies come from a named engineer within one business hour, 8am–6pm ET. We don't add you to a drip sequence and we don't share your details.</span></p>
+              </form>
+            </div>
+
+            <!-- Quote: general + 3 -->
+            <div role="tabpanel" id="panel-quote" aria-labelledby="tab-quote" hidden>
+              <form method="post" action="#" novalidate>
+                <div class="two">
+                  <p class="fg"><label for="q-name">Full name <i class="req" aria-hidden="true">*</i></label>
+                    <input id="q-name" name="name" type="text" autocomplete="name" placeholder="Jordan Blake" required></p>
+                  <p class="fg"><label for="q-company">Company <i class="req" aria-hidden="true">*</i></label>
+                    <input id="q-company" name="company" type="text" autocomplete="organization" placeholder="Blake &amp; Associates" required></p>
+                </div>
+                <div class="two">
+                  <p class="fg"><label for="q-email">Work email <i class="req" aria-hidden="true">*</i></label>
+                    <input id="q-email" name="email" type="email" autocomplete="email" placeholder="jordan@blakeassoc.com" required></p>
+                  <p class="fg"><label for="q-phone">Phone</label>
+                    <input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="(919) 555-0143"></p>
+                </div>
+                <div class="two">
+                  <p class="fg"><label for="q-size">Number of employees <i class="req" aria-hidden="true">*</i></label>
+                    <span class="sel"><select id="q-size" name="employees" required>
+                      <option>Under 10</option><option>10–25</option><option selected>25–50</option>
+                      <option>50–100</option><option>100–250</option><option>250+</option>
+                    </select></span></p>
+                  <p class="fg"><label for="q-service">Service needed <i class="req" aria-hidden="true">*</i></label>
+                    <span class="sel"><select id="q-service" name="service" required>
+                      <option selected>Managed IT Services</option>
+                      <option>Cybersecurity &amp; compliance</option>
+                      <option>Microsoft 365 Support</option>
+                      <option>Cloud Services</option>
+                      <option>Backup &amp; Disaster Recovery</option>
+                      <option>Enterprise IT Solutions</option>
+                    </select></span></p>
+                </div>
+                <div class="two">
+                  <p class="fg"><label for="q-when">How soon do you need to move? <i class="req" aria-hidden="true">*</i></label>
+                    <span class="sel"><select id="q-when" name="timeframe" required>
+                      <option>Immediately</option><option selected>Within 30 days</option>
+                      <option>This quarter</option><option>Planning / budgeting</option>
+                    </select></span></p>
+                  <p class="fg"><label for="q-current">Current provider status <i class="req" aria-hidden="true">*</i></label>
+                    <span class="sel"><select id="q-current" name="provider" required>
+                      <option>No IT provider today</option>
+                      <option>Internal IT only</option>
+                      <option selected>With an MSP, reviewing options</option>
+                      <option>With an MSP, contract ending</option>
+                    </select></span></p>
+                </div>
+                <p class="fg"><label for="q-msg">Anything we should know before the call?</label>
+                  <textarea id="q-msg" name="message" placeholder="Roughly 40 users across two sites, mixed on-prem and M365…"></textarea></p>
+                <button class="btn btn-pri btn-lg btn-block" type="submit">Request a Quote <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+                <p class="micro"><svg aria-hidden="true"><use href="#i-check"/></svg><span>We scope from an assessment, not a phone call — so the number you get is the number you pay.</span></p>
+              </form>
+            </div>
+
+            <!-- Existing client: redirect to the portal — deliberately no form -->
+            <div role="tabpanel" id="panel-client" aria-labelledby="tab-client" hidden>
+              <h2 style="font-size:20px">Please don't raise support here</h2>
+              <p class="body-txt mt-14">Support requests sent through the sales form lose their place in the queue. Use the portal or the priority line so your ticket is logged against your SLA.</p>
+              <div class="stack stack--12 mt-20">
+                <a class="btn btn-pri btn-block" href="https://portal.engagetechsolutions.us/" rel="noopener"><svg aria-hidden="true"><use href="#i-headset"/></svg>Open the client portal</a>
+                <a class="btn btn-sec btn-block" href="tel:+19193008111"><svg aria-hidden="true"><use href="#i-phone"/></svg>Priority line — (919) 300-8111</a>
+              </div>
+              <p class="micro"><svg aria-hidden="true"><use href="#i-check"/></svg><span>Critical incidents are answered 24/7. Portal tickets are tracked against your agreed response targets.</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 3/4/5 · ALTERNATIVE CONTACT · WHAT HAPPENS NEXT · TRUST STRIP -->
+        <div class="stack">
+          <!-- 3 · each channel states its response expectation: a phone number
+               with no hours is friction, not a convenience -->
+          <div class="card" style="padding:24px"><span class="rail"></span>
+            <h2 style="font-size:16.5px;margin-bottom:14px">Prefer not to fill in a form?</h2>
+            <div class="stack stack--12">
+              <a class="rail-link" href="tel:+19193008111">
+                <span class="ico-sm" style="width:38px;height:38px"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
+                <span><b style="display:block;font-size:15.5px;color:var(--navy)">(919) 300-8111</b><span class="meta">Mon–Fri 8am–6pm ET · 24/7 for clients</span></span>
+              </a>
+              <a class="rail-link" href="mailto:info@engagetechsolutions.us">
+                <span class="ico-sm" style="width:38px;height:38px"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+                <span><b style="display:block;font-size:15.5px;color:var(--navy)">info@engagetechsolutions.us</b><span class="meta">Replies within one business hour</span></span>
+              </a>
+              <p class="rail-link" style="align-items:flex-start">
+                <span class="ico-sm" style="width:38px;height:38px"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+                <span><b style="display:block;font-size:15.5px;color:var(--navy)">4242 Six Forks Road, Suite 1550</b><span class="meta">Raleigh, NC 27609 · Serving the Triangle and Charlotte</span></span>
+              </p>
+            </div>
+          </div>
+
+          <!-- 4 · sits BESIDE the form rather than below it, so it is read
+               before submission -->
+          <div class="card card-dk card-dk--solid" style="padding:24px">
+            <h2 style="font-size:16.5px;color:var(--white);margin-bottom:16px">What happens next</h2>
+            <ol class="steps--v" style="list-style:none;padding:0;gap:14px">
+              <li class="step"><span class="sn sn--sm">1</span><span style="font-size:14px;line-height:1.55;color:var(--on-dark-body)"><b style="color:var(--white)">Within one business hour</b> — a named engineer replies, not an auto-responder.</span></li>
+              <li class="step"><span class="sn sn--sm">2</span><span style="font-size:14px;line-height:1.55;color:var(--on-dark-body)"><b style="color:var(--white)">A 20-minute call</b> — what's breaking, what you've tried, what it's costing.</span></li>
+              <li class="step"><span class="sn sn--sm">3</span><span style="font-size:14px;line-height:1.55;color:var(--on-dark-body)"><b style="color:var(--white)">An honest answer</b> — a scoped proposal, or a referral if we're not the right fit.</span></li>
+            </ol>
+          </div>
+
+          <!-- 5 · icons only, no logos: it sits close to the form and must
+               stay visually quiet -->
+          <div class="card" style="padding:22px"><span class="rail"></span>
+            <ul class="trustbar" style="padding:0;gap:14px">
+              <li class="plogo" style="font-size:13.5px;font-weight:600"><svg aria-hidden="true"><use href="#i-cert"/></svg>100% US-based engineers</li>
+              <li class="plogo" style="font-size:13.5px;font-weight:600"><svg aria-hidden="true"><use href="#i-star"/></svg>99.5% satisfaction</li>
+              <li class="plogo" style="font-size:13.5px;font-weight:600"><svg aria-hidden="true"><use href="#i-lock"/></svg>NDA on request</li>
+              <li class="plogo" style="font-size:13.5px;font-weight:600"><svg aria-hidden="true"><use href="#i-clock"/></svg>1-hour response</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6 · EXISTING CLIENT SUPPORT — frequently omitted, and it's the section
+           that stops paying clients being triaged as leads -->
+  <section class="s s-dk s-tight" aria-labelledby="client-h">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="kicker">Already a client?</p>
+          <h2 id="client-h">Don't use this form for support</h2>
+          <p class="lede">Support requests raised through the sales form lose their place in the queue. Use the portal or the support line so your ticket is logged against your SLA.</p>
+        </div>
+        <div class="stack stack--12">
+          <a class="card card-dk card--row" href="https://portal.engagetechsolutions.us/" rel="noopener" style="padding:22px;align-items:center">
+            <span class="ico ico--inline" style="width:42px;height:42px"><svg aria-hidden="true" style="width:20px;height:20px"><use href="#i-headset"/></svg></span>
+            <span><b>Client support portal</b><span class="sub">Raise and track tickets · 24/7</span></span>
+          </a>
+          <a class="card card-dk card--row" href="tel:+19193008111" style="padding:22px;align-items:center">
+            <span class="ico ico--inline" style="width:42px;height:42px"><svg aria-hidden="true" style="width:20px;height:20px"><use href="#i-phone"/></svg></span>
+            <span><b>Priority support line</b><span class="sub">Critical incidents, answered 24/7</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 7 · FAQ — "Are we too small?" and "do we have to leave our current
+           provider?" recover the two most common silent bounces -->
+  <section class="s s-lt s-tight" aria-labelledby="cfaq-h">
+    <div class="wrap wrap--tight">
+      <div class="s-head ctr">
+        <p class="kicker">Before you send</p>
+        <h2 id="cfaq-h">Questions people ask on this page</h2>
+      </div>
+      <div class="faq" style="margin-top:30px">
+        <details open>
+          <summary><span class="q-t">Is the consultation really free?</span><span class="pm"><svg class="i-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="i-minus" aria-hidden="true"><use href="#i-minus"/></svg></span></summary>
+          <div class="a">Yes — the discovery call and the conversation that follows cost nothing. A full environment assessment is a paid engagement, and we tell you the price before you commit to it.</div>
+        </details>
+        <details>
+          <summary><span class="q-t">How quickly will someone get back to me?</span><span class="pm"><svg class="i-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="i-minus" aria-hidden="true"><use href="#i-minus"/></svg></span></summary>
+          <div class="a">Within one business hour between 8am and 6pm ET. Outside those hours you'll hear from us first thing the next business morning.</div>
+        </details>
+        <details>
+          <summary><span class="q-t">We're only 10 people. Are we too small?</span><span class="pm"><svg class="i-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="i-minus" aria-hidden="true"><use href="#i-minus"/></svg></span></summary>
+          <div class="a">No. We work with teams from around 10 users upward. Below that, co-managed or project work is usually a better fit than a full managed agreement, and we'll say so.</div>
+        </details>
+        <details>
+          <summary><span class="q-t">Do we have to leave our current IT provider first?</span><span class="pm"><svg class="i-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="i-minus" aria-hidden="true"><use href="#i-minus"/></svg></span></summary>
+          <div class="a">Not to talk to us. Many clients start with a co-managed arrangement or a single project. If you do transition, we handle the handover directly with the outgoing provider.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- NOTE: this template deliberately has NO final CTA band — the page is
+     already a CTA, and a second one competes with the form. -->
+<!--@footer-->
+<!--@mobile-bar-->
+<!--@foot-->

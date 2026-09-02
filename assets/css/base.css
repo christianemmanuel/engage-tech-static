@@ -1,0 +1,120 @@
+/* ==========================================================================
+   BASE — reset, document, typography scale, accessibility defaults
+   ========================================================================== */
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--white);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:var(--fs-body);
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  font-synthesis-weight:none;      /* trust the variable axis, never fake-bold */
+  overflow-x:hidden;
+}
+
+img,svg,video{max-width:100%}
+img{height:auto;display:block}
+
+/* ---------- Headings ------------------------------------------------------ */
+h1,h2,h3,h4,h5,h6{margin:0;text-wrap:balance;color:var(--navy)}
+h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--tr-h1);font-weight:850}
+h2{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--tr-h2);font-weight:800}
+h3{font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--tr-h3);font-weight:700}
+h4{font-size:var(--fs-h4);line-height:var(--lh-h4);letter-spacing:var(--tr-h4);font-weight:700}
+h5,h6{font-size:var(--fs-small);font-weight:700;letter-spacing:var(--tr-h4)}
+
+p{margin:0}
+/* No global `p + p` margin: <p> is used as a layout element too (form field
+   groups are <p class="fg"> grid items), where an inherited top margin
+   misaligns columns. Paragraph rhythm is set explicitly by .prose > p,
+   .card p and the .mt-* utilities. */
+
+ul,ol{margin:0}
+
+/* Browsers give figure/blockquote a UA `margin: 1em 40px`. These are used as
+   layout containers here (figure = testimonial card and article image,
+   blockquote = quote body and pull quote), so the inherited 40px side margin
+   would inset every card inside its grid track — breaking both the gap and the
+   alignment with the section heading. */
+figure,figcaption,blockquote,dl,dd{margin:0}
+
+a{color:inherit;text-decoration-thickness:from-font;text-underline-offset:2px}
+
+strong,b{font-weight:650}
+
+hr{border:0;border-top:1px solid var(--line);margin:0}
+
+/* ---------- Text roles --------------------------------------------------- */
+.lede{
+  font-size:var(--fs-lede);
+  line-height:var(--lh-lede);
+  color:var(--muted);
+  margin-top:18px;
+  max-width:62ch;
+}
+.body-txt{
+  font-size:var(--fs-body);
+  line-height:var(--lh-body);
+  color:var(--body-ink);
+  max-width:var(--measure);
+}
+.meta{font-size:var(--fs-small);line-height:1.5;color:var(--muted)}
+
+/* Dark-section text inversion — one place, inherited by every dark surface */
+.s-dk,.hero-dk{color:var(--on-dark)}
+.s-dk h1,.s-dk h2,.s-dk h3,.s-dk h4,.s-dk h5,
+.hero-dk h1,.hero-dk h2,.hero-dk h3,.hero-dk h4,.hero-dk h5{color:var(--white)}
+.s-dk .lede,.hero-dk .lede,
+.s-dk .body-txt,.hero-dk .body-txt{color:var(--on-dark-lede)}
+
+/* ---------- Forms inherit type ------------------------------------------- */
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+
+/* ---------- Tables ------------------------------------------------------- */
+table{border-collapse:collapse}
+
+/* ---------- Accessibility ------------------------------------------------ */
+:focus-visible{
+  outline:3px solid var(--cyan);
+  outline-offset:2px;
+  border-radius:4px;
+}
+/* dark surfaces need the brighter ring to clear 3:1 against navy */
+.s-dk :focus-visible,.hero-dk :focus-visible,.site-footer :focus-visible,
+.site-header.dark :focus-visible{outline-color:var(--cyan);}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.skip-link{
+  position:absolute;left:16px;top:-64px;z-index:200;
+  background:var(--white);color:var(--navy);font-weight:650;font-size:14px;
+  padding:12px 18px;border-radius:var(--r-btn-sm);box-shadow:var(--sh-3);
+  transition:top var(--ease);
+}
+.skip-link:focus{top:16px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* Print: drop chrome, keep content readable */
+@media print{
+  .site-header,.site-footer,.mobile-bar,.cta,.progressbar,.toc{display:none !important}
+  body{color:CanvasText;background:Canvas}
+}

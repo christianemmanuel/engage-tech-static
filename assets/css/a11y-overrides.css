@@ -1,0 +1,72 @@
+/* ==========================================================================
+   OPTIONAL — WCAG 2.1 AA COLOUR OVERRIDES
+   ==========================================================================
+
+   NOT LOADED BY DEFAULT. The pages ship faithful to the design system.
+
+   WHY THIS FILE EXISTS
+   The design system states (Part 1, "Accessibility note"):
+       "Gradient buttons carry white text at 650 weight and clear 4.5:1
+        across the whole ramp."
+   Measured, that is not the case. White on the gradient's own stops:
+       #00C6D7 (start)  2.09:1   FAIL (needs 4.5)
+       #1683D8 (mid)    3.98:1   FAIL
+       #173B8F (end)   10.20:1   pass
+   Because .btn-pri renders the first two-thirds of the ramp, primary CTA
+   labels sit at roughly 2–4:1 — the single largest accessibility gap in
+   the system, and it lands on the most important element on every page.
+
+   Four smaller pairings also fall just under AA:
+       --muted   #64748B on --bg #F5F9FC        4.50:1  (borderline)
+       --muted-2 #8A9AAD on white               2.87:1  (trustbar label,
+                                                         form placeholders)
+       --cyan-700 #00808C on --bg #F5F9FC       4.44:1
+       --cyan-700 #00808C on --cyan-050 tint    4.31:1  (kicker/eyebrow)
+       stat numeral gradient start #00C6D7      2.09:1  (needs 3.0, large text)
+
+   TRADE-OFF
+   Fixing the button means darkening the CTA gradient, which measurably
+   reduces the cyan vividness the whole identity is built on. That is a
+   brand decision, not a developer one — so it is parked here rather than
+   applied. The stat-numeral gradient is left alone deliberately: the
+   numerals are decorative emphasis and the adjacent .stat .l label always
+   carries the same meaning in an AA-compliant colour.
+
+   TO ENABLE
+   Add this line to <head> AFTER utilities.css, in every page (or in the
+   theme's wp_enqueue_style stack):
+       <link rel="stylesheet" href="/assets/css/a11y-overrides.css">
+   ========================================================================== */
+
+:root{
+  /* Text-safe cyan: clears AA on white, on --bg and on the cyan-050 tint */
+  --cyan-700:#00767F;
+
+  /* Supporting neutral: 2.87:1 -> 4.20:1 on white. Used by the trust-bar
+     label and form placeholders, both of which are small text. */
+  --muted-2:#6E7D91;
+
+  /* Muted was 4.4996:1 on --bg — a rounding-error miss. */
+  --muted:#5F6E85;
+
+  /* AA-compliant CTA ramp. Same three-stop structure and the same locked
+     100deg angle, each stop darkened until white clears 4.5:1 on it:
+        #00737E  5.59:1   #1167AC  5.90:1   #173B8F  10.20:1          */
+  --grad-cta-aa:linear-gradient(100deg,#00737E 0%,#1167AC 52%,#173B8F 100%);
+}
+
+/* Primary button only — section grounds, glows, rails, stat numerals and
+   every other gradient moment keep the original vivid ramp, so the brand
+   signature survives. */
+.btn-pri{background:var(--grad-cta-aa)}
+
+/* The step markers and form badge also carry white glyphs on the gradient. */
+.step .sn,
+.steps--v .sn,
+.form .form-head .badge,
+.quote .av,
+.byline .av,
+.author-box .av{background:var(--grad-cta-aa)}
+
+/* Featured card: white body copy sits on the ramp for a large area. */
+.card-feat{background:var(--grad-cta-aa)}
