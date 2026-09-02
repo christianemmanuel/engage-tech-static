@@ -53,7 +53,8 @@ engage-tech-static/
 │   │   └── a11y-overrides.css  OPTIONAL, not loaded — see "Accessibility"
 │   ├── js/main.js              208 lines, progressive enhancement only
 │   ├── fonts/                  Inter variable + IBM Plex Mono 400/500/600 (78 KB)
-│   └── svg/favicon.svg
+│   ├── logo.jpg                client-supplied brand mark (168×153) — the header/footer tile
+│   └── favicon.png             derived from logo.jpg (square-cropped, 64×64)
 │
 ├── src/                        SOURCE — edit here, not the built files
 │   ├── partials/*.html         single source of truth for shared markup →
@@ -193,6 +194,21 @@ and every mobile behaviour.
   should come from a dedicated "kicker" field (ACF text) so editors can tune it
   per page.
 
+**Brand mark:**
+
+- The 30px tile beside the "Engage Tech / Solutions" wordmark is the
+  client-supplied `assets/logo.jpg` (the gradient S-mark), used in the header,
+  the mobile drawer and the footer via `<img class="lm">`. Its colours are the
+  file's own and are not recoloured, per the design system's instruction for
+  production logos. The favicon is derived from the same file. The retired
+  `#i-bolt` sprite symbol is unused but left in the sprite.
+- The source is a 168×153 JPEG. That is sharp at the 30px tile size (5.6× the
+  displayed pixels) but JPEG has no transparency and will not scale up cleanly
+  — for any larger use (Open Graph image, print, the About hero) a vector or
+  high-resolution PNG master is still needed.
+- WordPress: wire the tile to `the_custom_logo()` / the Customizer logo so the
+  client can replace it without touching templates.
+
 **Other observations, not changed:**
 
 - Blog (17% navy) and Service (25% navy) sit under the 30% navy target. Both match
@@ -325,13 +341,8 @@ add after `utilities.css`:
 1. **Team photographs, real names and certifications** — the design system calls
    the anonymous About team grid a launch blocker. Placeholder cards are in place
    and labelled.
-2. **Production logo files.** The header/footer mark is currently built from the
-   design system's own `#i-bolt` SVG plus a CSS gradient tile, which is
-   resolution-independent and needs no image. If original vector files exist,
-   the design system's instruction is to preserve their colour values exactly and
-   re-derive the tint ramp from them.
-3. **Real case-study metrics.** `−63%`, `4.2h`, `247 endpoints`, `99.5%` and the
+2. **Real case-study metrics.** `−63%`, `4.2h`, `247 endpoints`, `99.5%` and the
    author "A. Mensah" are placeholders per the design system's own note. Every
    number on the site needs a source.
-4. **Client portal and social URLs** — currently pointing at
+3. **Client portal and social URLs** — currently pointing at
    `portal.engagetechsolutions.us` and platform roots.

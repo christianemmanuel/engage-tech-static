@@ -36,11 +36,14 @@
   color:var(--navy);text-decoration:none;
 }
 .site-header.dark .logo,.site-footer .logo{color:var(--white)}
+/* Brand mark = assets/logo.jpg (client-supplied, 168x153). object-fit:cover
+   trims ~1.5px of gradient edge to keep the tile an exact 30px square; the
+   gradient background only shows while the image loads. Colours are the
+   file's own — never recoloured (design system footnote on production logos). */
 .logo .lm{
   width:30px;height:30px;border-radius:8px;background:var(--grad);
-  display:grid;place-items:center;flex:none;
+  display:block;object-fit:cover;flex:none;
 }
-.logo .lm svg{width:17px;height:17px;color:var(--white)}
 .logo small{
   display:block;margin-top:3px;
   font:600 8.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
