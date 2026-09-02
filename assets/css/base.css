@@ -24,8 +24,11 @@ img,svg,video{max-width:100%}
 img{height:auto;display:block}
 
 /* ---------- Headings ------------------------------------------------------ */
-h1,h2,h3,h4,h5,h6{margin:0;text-wrap:balance;color:var(--navy)}
-h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--tr-h1);font-weight:850}
+h1,.h1,h2,h3,h4,h5,h6{margin:0;text-wrap:balance;color:var(--navy)}
+/* .h1 carries the display metrics on any element. Hero titles are <p class="h1">
+   because the page <h1> is the kicker badge (client SEO decision) — the visual
+   hierarchy and the document outline are deliberately decoupled here. */
+h1,.h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--tr-h1);font-weight:850}
 h2{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--tr-h2);font-weight:800}
 h3{font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--tr-h3);font-weight:700}
 h4{font-size:var(--fs-h4);line-height:var(--lh-h4);letter-spacing:var(--tr-h4);font-weight:700}
@@ -70,8 +73,8 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 
 /* Dark-section text inversion — one place, inherited by every dark surface */
 .s-dk,.hero-dk{color:var(--on-dark)}
-.s-dk h1,.s-dk h2,.s-dk h3,.s-dk h4,.s-dk h5,
-.hero-dk h1,.hero-dk h2,.hero-dk h3,.hero-dk h4,.hero-dk h5{color:var(--white)}
+.s-dk h1,.s-dk .h1,.s-dk h2,.s-dk h3,.s-dk h4,.s-dk h5,
+.hero-dk h1,.hero-dk .h1,.hero-dk h2,.hero-dk h3,.hero-dk h4,.hero-dk h5{color:var(--white)}
 .s-dk .lede,.hero-dk .lede,
 .s-dk .body-txt,.hero-dk .body-txt{color:var(--on-dark-lede)}
 

@@ -55,10 +55,9 @@ engage-tech-static/
 │   ├── fonts/                  Inter variable + IBM Plex Mono 400/500/600 (78 KB)
 │   └── svg/favicon.svg
 │
-├── partials/                   reference copies of the shared blocks →
-│                               these map 1:1 onto WordPress template parts
 ├── src/                        SOURCE — edit here, not the built files
-│   ├── partials/*.html         single source of truth for shared markup
+│   ├── partials/*.html         single source of truth for shared markup →
+│   │                           these map 1:1 onto WordPress template parts
 │   └── pages/*.html            page-unique content + a CONFIG block
 └── tools/build.py              stitches src/ into the built pages
 ```
@@ -93,7 +92,7 @@ in the built HTML, so each block lifts out unambiguously.
 |---|---|
 | `src/partials/head.html` + `header.html` | `header.php` |
 | `HEADER_MODE` (`""` / `" dark"`) | `body_class()` or an argument — dark **only** where the hero is navy (Home, Location, Industry) |
-| `mega-services/solutions/industries/resources.html` | `template-parts/nav/mega-*.php`, driven by a `wp_nav_menu` walker |
+| `mega-services/industries/resources.html` | `template-parts/nav/mega-*.php`, driven by a `wp_nav_menu` walker |
 | `drawer.html` | `template-parts/nav/drawer.php` (same menu, mobile walker) |
 | `cta.html` | `template-parts/cta-band.php` — copy from theme options |
 | `footer.html` | `footer.php` — 3 menu locations + a NAP block from theme options |
@@ -175,12 +174,29 @@ and every mobile behaviour.
   shell), `.wrap--article` 900px (blog header), `.wrap--tight` 860px (contact
   FAQ). Say the word if you want these scaled up too.
 
+**Hero heading semantics, client-directed (SEO):**
+
+- In every hero the **kicker badge is the page `<h1>`** and the large display
+  title is a `<p class="h1">`. Visually nothing changes — `.h1` carries the
+  exact display metrics (`h1,.h1{…}` in `base.css`), and `.kicker` out-specifies
+  the bare `h1` element rules — but the document outline now reads
+  *"Raleigh · Charlotte · Statewide NC"* (Home), *"Managed IT Services"*
+  (Service), *"Raleigh, North Carolina"* (Location), *"Healthcare & Medical
+  Practices"* (Industry), *"Cybersecurity"* (Blog), *"Get in touch"* (Contact),
+  *"About Engage Tech Solutions"* (About). Exactly one `h1` per page, no
+  heading-level skips.
+- Two consequences worth knowing. **Blog:** the `h1` is now the category label,
+  not the article title, which also no longer matches the `Article` schema
+  `headline` — if that turns out to be unwanted, the blog is a one-line revert
+  in `src/pages/blog-post.html`. **Screen readers** announce the `h1` as the page
+  title, so the badge copy is what a VoiceOver user hears first; keep kicker
+  text meaningful, not decorative.
+- WordPress: `the_title()` should render into `<p class="h1">`, and the `h1`
+  should come from a dedicated "kicker" field (ACF text) so editors can tune it
+  per page.
+
 **Other observations, not changed:**
 
-- The nav has six top-level items including **Solutions**, but the mega-menu
-  component only specifies Services / Industries / Resources. Solutions has been
-  given an outcome-led 3-column menu built from the design system's own
-  "By Outcome" content. Confirm or drop it at menu setup.
 - Blog (17% navy) and Service (25% navy) sit under the 30% navy target. Both match
   their mockups exactly. The design system's own remedy — push one feature section
   to navy — is a content call, so it is flagged rather than applied.
@@ -212,7 +228,7 @@ difference invisibly.
 `position:absolute; left:0; right:0` and must resolve against the sticky
 `.site-header` so it spans the full viewport. Making the `<li>` a containing
 block (`position:relative`) collapses the panel to the width of its nav button
-— about 102px — and the four columns spill out over the hero.
+— about 102px — and the columns spill out over the hero.
 
 **2 · Every top-level nav rule is scoped with `> li >`.** The mega panels are
 *descendants* of `.main-nav`, so an unscoped `.main-nav a { … }` reaches inside
@@ -221,10 +237,10 @@ faults at once: mega links inherited the dark-header text colour onto a white
 panel, `background:none` erased the promo button's gradient, and `opacity:.6`
 dimmed every mega icon. Keep the child combinators when editing this block.
 
-Verified on both header variants: all four panels render 1440px wide with a
-1280px inner container and the correct column counts (Services 4, Solutions 3,
-Industries 3, Resources 2), while the top-level items keep their own colour,
-padding, active underline and chevron rotation.
+Verified on both header variants: all three panels render 1440px wide with a
+1280px inner container and the correct column counts (Services 4, Industries 3,
+Resources 2), while the top-level items keep their own colour, padding, active
+underline and chevron rotation.
 
 ---
 
@@ -321,4 +337,3 @@ add after `utilities.css`:
    number on the site needs a source.
 4. **Client portal and social URLs** — currently pointing at
    `portal.engagetechsolutions.us` and platform roots.
-5. **Confirm the "Solutions" nav item** (see above).
