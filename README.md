@@ -176,21 +176,19 @@ and every mobile behaviour.
 
 **Hero heading semantics, client-directed (SEO):**
 
-- In every hero the **kicker badge is the page `<h1>`** and the large display
-  title is a `<p class="h1">`. Visually nothing changes — `.h1` carries the
+- In every hero **except the blog post**, the kicker badge is the page `<h1>`
+  and the large display title is a `<p class="h1">`. Visually nothing changes — `.h1` carries the
   exact display metrics (`h1,.h1{…}` in `base.css`), and `.kicker` out-specifies
   the bare `h1` element rules — but the document outline now reads
   *"Raleigh · Charlotte · Statewide NC"* (Home), *"Managed IT Services"*
   (Service), *"Raleigh, North Carolina"* (Location), *"Healthcare & Medical
-  Practices"* (Industry), *"Cybersecurity"* (Blog), *"Get in touch"* (Contact),
-  *"About Engage Tech Solutions"* (About). Exactly one `h1` per page, no
-  heading-level skips.
-- Two consequences worth knowing. **Blog:** the `h1` is now the category label,
-  not the article title, which also no longer matches the `Article` schema
-  `headline` — if that turns out to be unwanted, the blog is a one-line revert
-  in `src/pages/blog-post.html`. **Screen readers** announce the `h1` as the page
-  title, so the badge copy is what a VoiceOver user hears first; keep kicker
-  text meaningful, not decorative.
+  Practices"* (Industry), *"Get in touch"* (Contact), *"About Engage Tech
+  Solutions"* (About). Exactly one `h1` per page, no heading-level skips.
+- **Blog post is the exception:** its `h1` stays the article title so it matches
+  the `Article` schema `headline`; the category kicker remains a `<p>`.
+- **Screen readers** announce the `h1` as the page title, so on the six swapped
+  pages the badge copy is what a VoiceOver user hears first; keep kicker text
+  meaningful, not decorative.
 - WordPress: `the_title()` should render into `<p class="h1">`, and the `h1`
   should come from a dedicated "kicker" field (ACF text) so editors can tune it
   per page.

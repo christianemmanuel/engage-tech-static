@@ -770,7 +770,7 @@ a.pill:hover{border-color:var(--cyan);color:var(--cyan-700)}
   background:var(--grad-article-wash);
   padding:44px 0 34px;border-bottom:1px solid var(--line);
 }
-.article-head .h1{font-size:clamp(30px,3.8vw,46px)}   /* .h1 not h1 — the h1 here is the category kicker */
+.article-head h1{font-size:clamp(30px,3.8vw,46px)}    /* blog keeps the article title as h1 (matches Article schema headline) */
 .article-head .lede{max-width:64ch}
 .byline{display:flex;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap}
 .byline .av{
