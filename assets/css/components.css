@@ -372,7 +372,7 @@ a.card{text-decoration:none;display:block}
 .stat{background:var(--white);padding:26px 22px}
 .s-dk .stat,.hero-dk .stat{background:var(--navy)}
 .stat .n{
-  font-size:38px;font-weight:850;letter-spacing:-.04em;line-height:1;
+  font-size:33px;font-weight:850;letter-spacing:-.04em;line-height:1;
   font-variant-numeric:tabular-nums;
   background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
 }
@@ -481,7 +481,11 @@ a.card{text-decoration:none;display:block}
    12 · CTA BANNER  (navy + radial glow + gradient edge). One per page,
         directly above the footer. Contact page deliberately has none.
    ========================================================================== */
-.cta-band{background:var(--white);padding-block:0 84px}
+/* Mockup: <section class="s s-lt" style="padding-bottom:0"> (84px top) followed by an
+   84px spacer — i.e. full section padding above AND below the band. The previous
+   section keeps its own bottom padding, so the card never touches a dark or tinted
+   section edge. */
+.cta-band{background:var(--white);padding-block:var(--section-y)}
 .cta{
   position:relative;overflow:hidden;
   background:var(--navy);border-radius:var(--r-band);
@@ -501,7 +505,6 @@ a.card{text-decoration:none;display:block}
 .cta .ca{position:relative;display:flex;gap:12px;flex-wrap:wrap}
 @media (max-width:767px){
   .cta{padding:36px 26px;gap:28px}
-  .cta-band{padding-bottom:56px}
   .cta .ca .btn{width:100%}
 }
 
