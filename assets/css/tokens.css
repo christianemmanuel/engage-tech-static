@@ -100,6 +100,9 @@
   --sh-cy:0 12px 32px rgba(0,150,175,.28);
   --sh-cy-hover:0 16px 38px rgba(0,150,175,.36);
 
+  /* ---------- Feedback --------------------------------------------------- */
+  --danger:#B4544F;               /* form validation errors; the design system's own 'failure' red */
+
   /* ---------- Type -------------------------------------------------------- */
   --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
