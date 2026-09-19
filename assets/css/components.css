@@ -277,6 +277,9 @@
 }
 
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+@media (max-width:767px){
+  .hero-cta .btn{width:100%}   /* stacked buttons align, as in the CTA band */
+}
 .hero-note{
   display:flex;gap:20px;flex-wrap:wrap;margin-top:26px;
   font-size:var(--fs-small);color:var(--on-dark-muted);
