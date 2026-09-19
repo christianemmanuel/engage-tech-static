@@ -28,6 +28,7 @@ PAGES = [
     'in/raleigh/managed-it-services/index.html',
     'industries/healthcare-it-services/index.html',
     'blog/cyber-insurance-controls-2026/index.html',
+    'docs/index.html',          # editor handbook — hand-written, not built from src/
 ]
 
 # href="/x" or src="/x" — but not protocol-relative ("//") and not already prefixed

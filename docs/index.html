@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page Builder Handbook — Engage Tech Solutions</title>
+<meta name="description" content="How to build and edit pages on the Engage Tech Solutions website: sections, elements, forms and the CTA band.">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<style>
+/* Documentation styling. Colour and type come from the site's own tokens, so this
+   page can never drift from the design system it documents. */
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:400 16px/1.65 Inter,ui-sans-serif,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* masthead */
+.top{background:var(--navy);color:#fff;padding:46px 0 40px}
+.top .eyebrow{
+  font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin:0 0 14px;
+}
+.top h1{
+  font:750 clamp(30px,4.4vw,44px)/1.08 Inter,sans-serif;
+  letter-spacing:-.022em;margin:0 0 12px;color:#fff;text-wrap:balance;
+}
+.top p{margin:0;font-size:17.5px;line-height:1.6;color:#C6D6E4;max-width:62ch}
+.top .meta{
+  margin-top:22px;font:400 13px/1.5 'IBM Plex Mono',ui-monospace,monospace;color:#8FA6BB;
+}
+
+/* shell */
+.shell{display:grid;grid-template-columns:1fr;gap:34px;padding:38px 0 90px}
+@media (min-width:1000px){
+  .shell{grid-template-columns:212px minmax(0,1fr);gap:50px}
+  .toc{position:sticky;top:26px;align-self:start;max-height:calc(100vh - 52px);overflow:auto}
+}
+.toc h2{
+  font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;
+}
+.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px}
+.toc a{
+  display:block;padding:7px 10px;border-radius:6px;font-size:14.5px;
+  color:var(--prose-ink);text-decoration:none;border-left:2px solid transparent;
+}
+.toc a:hover{background:#fff;color:var(--navy);border-left-color:var(--cyan)}
+
+main{min-width:0}
+section{scroll-margin-top:20px}
+h2.s{
+  font:700 clamp(21px,2.5vw,27px)/1.25 Inter,sans-serif;letter-spacing:-.015em;
+  margin:46px 0 8px;padding-top:26px;border-top:1px solid var(--line);color:var(--navy);
+  text-wrap:balance;
+}
+section:first-of-type h2.s{border-top:0;padding-top:0;margin-top:0}
+h3{font:650 17.5px/1.35 Inter,sans-serif;margin:26px 0 8px;color:var(--navy)}
+p{margin:0 0 14px;max-width:70ch;color:var(--prose-ink)}
+p.lede{font-size:17px;color:var(--prose-ink)}
+ul,ol.num{margin:0 0 16px;padding-left:21px;max-width:70ch;color:var(--prose-ink)}
+li{margin-bottom:7px}
+li::marker{color:var(--cyan-600,var(--cyan))}
+strong{font-weight:650;color:var(--ink)}
+a{color:var(--blue-700,var(--blue));text-underline-offset:2px}
+code{
+  font:400 .87em/1.4 'IBM Plex Mono',ui-monospace,monospace;
+  background:var(--line-2);color:var(--navy);padding:.15em .4em;border-radius:4px;
+  overflow-wrap:break-word;
+}
+
+/* field path pill */
+.path{
+  display:inline-block;font:500 13px/1.5 'IBM Plex Mono',ui-monospace,monospace;
+  background:var(--cyan-050,#E6F7FA);color:var(--navy);
+  padding:.2em .5em;border-radius:5px;
+}
+
+/* callout */
+.note{
+  background:#fff;border:1px solid var(--line);border-left:3px solid var(--cyan);
+  border-radius:0 8px 8px 0;padding:15px 18px;margin:0 0 18px;
+}
+.note p{margin:0;max-width:64ch}
+.note p + p{margin-top:9px}
+.note .k{
+  display:block;font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--cyan-700,#0891A6);margin-bottom:8px;
+}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#fff;margin:0 0 18px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:480px}
+th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--prose-ink)}
+tr:last-child td{border-bottom:0}
+th{
+  font:500 10.5px/1.3 'IBM Plex Mono',ui-monospace,monospace;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  background:var(--bg);white-space:nowrap;
+}
+td b,td strong{color:var(--navy);font-weight:650}
+td.mono{font:400 12.5px/1.5 'IBM Plex Mono',ui-monospace,monospace;white-space:nowrap}
+
+/* catalogue grid */
+.cat{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px;margin:0 0 18px}
+.cat div{
+  background:#fff;border:1px solid var(--line);border-radius:8px;padding:13px 15px;
+}
+.cat b{
+  display:block;font:500 12.5px/1.4 'IBM Plex Mono',ui-monospace,monospace;
+  color:var(--navy);margin-bottom:5px;
+}
+.cat span{font-size:14px;line-height:1.5;color:var(--prose-ink);display:block}
+
+/* steps */
+ol.steps{list-style:none;counter-reset:s;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:9px}
+ol.steps li{
+  counter-increment:s;position:relative;padding-left:34px;margin:0;
+  color:var(--prose-ink);max-width:68ch;
+}
+ol.steps li::before{
+  counter-increment:none;content:counter(s);
+  position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;
+  background:var(--navy);color:#fff;text-align:center;
+  font:500 12px/23px 'IBM Plex Mono',ui-monospace,monospace;
+}
+
+footer{
+  border-top:1px solid var(--line);padding:24px 0 60px;
+  font:400 13.5px/1.7 'IBM Plex Mono',ui-monospace,monospace;color:var(--muted);
+}
+footer a{color:var(--muted)}
+a:focus-visible,.toc a:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <p class="eyebrow">Engage Tech Solutions</p>
+    <h1>Page Builder Handbook</h1>
+    <p>How pages on this website are put together, and how to change them yourself — sections, elements, forms and the call-to-action band. No code needed for anything on this page.</p>
+    <p class="meta">For editors · 22 section layouts · 11 element types</p>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="shell">
+
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#how">How a page is built</a></li>
+      <li><a href="#sections">Working with sections</a></li>
+      <li><a href="#backgrounds">Backgrounds</a></li>
+      <li><a href="#catalogue">Section catalogue</a></li>
+      <li><a href="#elements">Free elements</a></li>
+      <li><a href="#forms">Forms and shortcodes</a></li>
+      <li><a href="#cta">The CTA band</a></li>
+      <li><a href="#hero">The hero</a></li>
+      <li><a href="#changes">Recent changes</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+  <section id="how">
+    <h2 class="s">How a page is built</h2>
+    <p class="lede">Every page has two parts: a <strong>hero</strong> at the top, which is always there, and a stack of <strong>sections</strong> below it, which you control completely.</p>
+    <p>The hero holds the badge, headline, intro line, buttons and banner image. It stays fixed at the top because the badge doubles as the page's main heading for search engines.</p>
+    <p>Everything under the hero is yours to arrange. You add sections, drag them into the order you want, and hide the ones you do not need. Nothing is locked, and nothing requires a developer.</p>
+    <div class="note">
+      <span class="k">Where to find it</span>
+      <p>Open any page, service, industry or location in the WordPress admin. Below the main editor you will see two panels: <span class="path">Hero</span> and <span class="path">Page sections</span>.</p>
+    </div>
+  </section>
+
+  <section id="sections">
+    <h2 class="s">Working with sections</h2>
+    <ol class="steps">
+      <li><strong>Add.</strong> Click <span class="path">Add section</span> at the bottom of the Page sections panel and pick a layout from the list.</li>
+      <li><strong>Reorder.</strong> Drag a section by its header bar. The page re-flows automatically.</li>
+      <li><strong>Hide.</strong> Switch on <span class="path">Hide this section</span>. The section disappears from the live page but keeps all its content, and its header gains a red <em>(hidden)</em> label so you can see at a glance what is switched off.</li>
+      <li><strong>Collapse.</strong> Click a section's header to fold it away while you work on others.</li>
+      <li><strong>Duplicate.</strong> Use the section's own menu to copy it, content and all.</li>
+    </ol>
+    <p>Each section also carries a <strong>kicker</strong> (the small label above the heading), a <strong>title</strong>, and a <strong>lede</strong> (the intro paragraph). Leave any of them blank to omit it.</p>
+    <div class="note">
+      <span class="k">Tip</span>
+      <p>In a title, wrap one phrase in asterisks to give it the cyan-to-blue gradient: <code>IT that keeps your business *running and secure*</code>. Use it once per title — it stops working as emphasis if everything is highlighted.</p>
+    </div>
+    <h3>Tighter padding and anchors</h3>
+    <p><span class="path">Tighter padding</span> reduces the space above and below a section, useful when two related sections should read as one block. <span class="path">Anchor id</span> gives the section a name you can link to from elsewhere on the page, for example <code>#book-a-call</code>.</p>
+  </section>
+
+  <section id="backgrounds">
+    <h2 class="s">Backgrounds</h2>
+    <p>Every section has a <span class="path">Background</span> setting with four choices.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Setting</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><b>Auto</b></td><td>The default. Alternates white and pale tint down the page on its own, so the rhythm stays right however you reorder things.</td></tr>
+          <tr><td><b>White</b></td><td>Forces plain white.</td></tr>
+          <tr><td><b>Light tint</b></td><td>Forces the pale blue-grey.</td></tr>
+          <tr><td><b>Deep navy</b></td><td>Forces the dark band. Text and cards invert automatically.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <span class="k">One rule the page enforces for you</span>
+      <p><strong>Two dark bands can never sit next to each other.</strong> If you set a section to Deep navy and the one above it is already dark, the second renders as tint instead.</p>
+      <p>This is not a bug. Stacked dark bands merge into one heavy slab and the page loses its sense of structure, so the design system forbids it and the page simply will not let it happen.</p>
+    </div>
+    <p>The same applies to the CTA band: it paints its own gradient and counts as a dark step, so a section placed straight after one will not render dark either.</p>
+  </section>
+
+  <section id="catalogue">
+    <h2 class="s">Section catalogue</h2>
+    <p class="lede">Twenty-two layouts. Most are purpose-built for one job, which is why they look right with no fiddling. Pick by what the content <em>is</em>, not by how you want it to look.</p>
+
+    <h3>Showing what you offer</h3>
+    <div class="cat">
+      <div><b>cards</b><span>Three or four icon cards. One may be the gradient featured card.</span></div>
+      <div><b>services_grid</b><span>Pulls live cards from your Services, so it updates itself.</span></div>
+      <div><b>industries_grid</b><span>The same for Industries.</span></div>
+      <div><b>local_cards</b><span>Service cards for a specific city.</span></div>
+      <div><b>link_cards</b><span>Simple cards that link somewhere.</span></div>
+      <div><b>pills</b><span>Grouped tag clouds — service areas, frameworks, tools.</span></div>
+    </div>
+
+    <h3>Making the case</h3>
+    <div class="cat">
+      <div><b>text_stats</b><span>Prose on one side, numbers on the other.</span></div>
+      <div><b>ticks_split</b><span>A tick list beside stats, a quote, steps or pills.</span></div>
+      <div><b>stats_band</b><span>Numbers across the full width.</span></div>
+      <div><b>steps</b><span>A numbered process, left to right.</span></div>
+      <div><b>method_cards</b><span>Your story beside how you work.</span></div>
+      <div><b>case_study</b><span>A result, with the image leading.</span></div>
+    </div>
+
+    <h3>Proof and people</h3>
+    <div class="cat">
+      <div><b>testimonials</b><span>Up to three client quotes.</span></div>
+      <div><b>quote_stats</b><span>One quote beside supporting numbers.</span></div>
+      <div><b>team</b><span>Your people, with roles and specialisms.</span></div>
+      <div><b>trust_bar</b><span>A quiet row of platform or certification marks.</span></div>
+    </div>
+
+    <h3>Answering and converting</h3>
+    <div class="cat">
+      <div><b>faq</b><span>An accordion, optionally with related links, resources or a form beside it.</span></div>
+      <div><b>posts</b><span>Latest articles, or three you choose.</span></div>
+      <div><b>cta_band</b><span>The gradient call-to-action, placed mid-page.</span></div>
+    </div>
+
+    <h3>When nothing else fits</h3>
+    <div class="cat">
+      <div><b>rich_text</b><span>Free prose, one or two columns, with an optional image and shortcode.</span></div>
+      <div><b>shortcode</b><span>Any shortcode as its own section — a form, a map, a calendar.</span></div>
+      <div><b>elements</b><span>The free builder. See the next part.</span></div>
+    </div>
+
+    <div class="note">
+      <span class="k">Which should I reach for?</span>
+      <p>Try a purpose-built layout first. They carry the spacing, type sizes and colour decisions already made for that kind of content, so they look finished immediately. Use <b>rich_text</b> or <b>elements</b> when your content genuinely does not match any of them.</p>
+    </div>
+  </section>
+
+  <section id="elements">
+    <h2 class="s">Free elements</h2>
+    <p class="lede">The <span class="path">Free elements</span> section is the escape hatch. Inside it you stack individual elements in any order, across one, two or three columns.</p>
+    <p>Add a section, choose <strong>Free elements</strong>, then use its own <span class="path">Add element</span> button. Drag elements to reorder them exactly as you do with sections.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Element</th><th>Options</th></tr></thead>
+        <tbody>
+          <tr><td><b>Heading</b></td><td>Three sizes, left or centred, asterisk highlighting works here too</td></tr>
+          <tr><td><b>Text</b></td><td>Full editor, images can be dropped inline</td></tr>
+          <tr><td><b>Image</b></td><td>Full, half or one-third width, with an optional caption</td></tr>
+          <tr><td><b>Button</b></td><td>Three styles, left or centred</td></tr>
+          <tr><td><b>Tick list</b></td><td>Check marks or minus signs</td></tr>
+          <tr><td><b>Stats</b></td><td>Two, three or four across</td></tr>
+          <tr><td><b>Card</b></td><td>Icon, title, text, optional link, optional gradient treatment</td></tr>
+          <tr><td><b>Quote</b></td><td>Free text with a name and role, not tied to a saved testimonial</td></tr>
+          <tr><td><b>Shortcode</b></td><td>Anything, optionally in a white card</td></tr>
+          <tr><td><b>Spacer</b></td><td>Small, medium or large gap</td></tr>
+          <tr><td><b>Divider</b></td><td>A hairline rule</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <span class="k">Why this still looks right</span>
+      <p>Every element is drawn by the same code the purpose-built sections use. A card here is the same card as in a card grid; stats are the same stats. You get freedom of arrangement without the page drifting away from the brand.</p>
+    </div>
+    <p>Columns respond on their own: three drop to two on tablets and to one on phones.</p>
+  </section>
+
+  <section id="forms">
+    <h2 class="s">Forms and shortcodes</h2>
+    <p class="lede">A shortcode is a short piece of text in square brackets that the site swaps for something real — most often a contact form.</p>
+    <h3>Getting the shortcode</h3>
+    <ol class="steps">
+      <li>Go to <span class="path">Fluent Forms → All Forms</span> in the admin sidebar.</li>
+      <li>Find your form in the list. The <strong>Shortcode</strong> column shows something like <code>[fluentform id="3"]</code>.</li>
+      <li>Copy it.</li>
+    </ol>
+    <h3>Four places you can paste it</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Where</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td><b>Shortcode / embed</b> section</td><td>A form that is the point of the section. Choose narrow or full width, boxed or bare.</td></tr>
+          <tr><td><b>FAQ</b> section → Right-hand panel set to <em>Form</em></td><td>A form beside the questions. Fill in <span class="path">Fluent Forms shortcode</span>.</td></tr>
+          <tr><td><b>Rich text</b> section → Shortcode field</td><td>A form directly under some explaining text.</td></tr>
+          <tr><td><b>Free elements</b> → Shortcode element</td><td>A form anywhere in a stack of other elements.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <span class="k">If you see placeholder text</span>
+      <p>“Add a Fluent Forms shortcode to this section” means the shortcode field is still empty. Scroll down inside that section and paste it in.</p>
+      <p>Any shortcode works in all four places, not only forms — so a map, a booking calendar or a video embed from another plugin goes in exactly the same way.</p>
+    </div>
+  </section>
+
+  <section id="cta">
+    <h2 class="s">The CTA band</h2>
+    <p class="lede">The gradient band that invites people to get in touch. It appears above the footer on every page except Contact, and you can also drop one mid-page.</p>
+    <h3>Editing the copy</h3>
+    <p>Open <span class="path">Hero → CTA band</span> on any page. Change the heading, the text, the button, or any combination.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Level</th><th>Applies to</th></tr></thead>
+        <tbody>
+          <tr><td><b>A CTA band section</b></td><td>That one band only</td></tr>
+          <tr><td><b>Hero → CTA band tab</b></td><td>That one page</td></tr>
+          <tr><td><b>Site Settings</b></td><td>Every page that has not overridden it</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <span class="k">Each field falls through on its own</span>
+      <p>Change only the heading on a page and its text and button still come from Site Settings. You never have to retype copy you did not want to change, and updating the site-wide text still reaches every page that left it alone.</p>
+    </div>
+    <h3>Turning it off, or moving it</h3>
+    <p>Switch off <span class="path">Show the CTA band above the footer</span> to remove it from a page. To place one mid-page instead, add a <strong>CTA band</strong> section wherever you like — you can have both.</p>
+  </section>
+
+  <section id="hero">
+    <h2 class="s">The hero</h2>
+    <p>The hero panel sits above Page sections and holds the top of the page.</p>
+    <ul>
+      <li><strong>Kicker badge</strong> — the small pill. This is the page's main heading for search engines, so keep it short and descriptive.</li>
+      <li><strong>Display title</strong> — the large headline. Asterisks give the gradient highlight.</li>
+      <li><strong>Lede</strong> — one or two sentences of intro.</li>
+      <li><strong>Buttons</strong> — a primary and an optional secondary. On phones they stretch to full width so they line up.</li>
+      <li><strong>Reassurance points</strong> — up to three short micro-points with icons.</li>
+      <li><strong>Banner image</strong> — with alt text for accessibility.</li>
+      <li><strong>Hide image on mobile</strong> — keeps the image on desktop and drops it on phones, where it can crowd the text.</li>
+    </ul>
+  </section>
+
+  <section id="changes">
+    <h2 class="s">Recent changes</h2>
+    <p class="lede">Seven requests from the September review, all now live.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Request</th><th>Where it lives</th></tr></thead>
+        <tbody>
+          <tr><td>Hide the hero image on mobile</td><td>Hero → Hero tab</td></tr>
+          <tr><td>Rich text in one or two columns</td><td>Rich text → Text columns</td></tr>
+          <tr><td>Add an image to rich text</td><td>Rich text → Image, four positions</td></tr>
+          <tr><td>Put a contact form in a section</td><td>Four places, see <a href="#forms">Forms and shortcodes</a></td></tr>
+          <tr><td>Edit the CTA band per page</td><td>Hero → CTA band tab</td></tr>
+          <tr><td>Add the CTA band as a section</td><td>Add section → CTA band</td></tr>
+          <tr><td>Add elements, not only sections</td><td>Add section → Free elements</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Hero buttons now stretch to full width on phones, so a long label and a short one line up instead of stepping raggedly.</p>
+  </section>
+
+  </main>
+</div>
+</div>
+
+<footer>
+  <div class="wrap">
+    Engage Tech Solutions · page builder documentation ·
+    <a href="/">back to the site preview</a>
+  </div>
+</footer>
+
+</body>
+</html>
